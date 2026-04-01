@@ -1,4 +1,5 @@
 #include "trislents.h"
+#include "fonctions.h"
 
 void triselection(int* montab, int taille){
     int min;
