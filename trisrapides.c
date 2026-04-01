@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "trisrapides.h"
+#include "fonctions.h"
 
 void trirapide(int* montab, int pas, int taille){
     int milieu;
@@ -15,8 +16,8 @@ void trifusion(int* montab, int debut, int fin){
     int milieu;
     if(debut<fin){
         milieu=(debut+fin)/2;
-        trifusion(tab, debut, milieu);
-        trifusion(tab, milieu+1, fin);
-        fusionner(tab, debut, milieu, fin);
+        trifusion(montab, debut, milieu);
+        trifusion(montab, milieu+1, fin);
+        fusionner(montab, debut, milieu, fin);
     }
 }
