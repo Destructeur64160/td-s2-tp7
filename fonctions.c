@@ -39,19 +39,57 @@ int partitionner(int* montab, int debut,int fin){
     int pivot;
     int i;
     int j;
-    pivot=tab[debut];
+    pivot=montab[debut];
     i=debut-1;
     j=fin+1;
     while(i<j){
         do{
             j=j-1;
-        }while(tab[j]>pivot)
+        }while(montab[j]>pivot);
         do{
             i=i+1;
-        }while(tab[i]<pivot)
+        }while(montab[i]<pivot);
         if(i<j){
             echange(montab, i, j);
         }
     }
-    return j
+    return j;
+}
+
+void fusionner(int* montab, int debut, int milieu, int fin){
+    int i;
+    int max;
+    int gauche;
+    int droite;
+    int* tabtemp;
+    tabtemp=allouer((fin-debut)+1);
+    i=0;
+    max=fin-debut;
+    gauche=debut;
+    droite=milieu+1;
+    while(gauche<=milieu && droite<=fin){
+        if(montab[gauche]<montab[droite]){
+            tabtemp[i]=montab[gauche];
+            gauche=gauche+1;
+        }
+        else{
+            tabtemp[i]=montab[droite];
+            droite=droite+1;
+        }
+        i=i+1;
+    }
+    while(gauche<=milieu){
+        tabtemp[i]=montab[gauche];
+        gauche=gauche+1;
+        i=i+1;
+    }
+    while(droite<=fin){
+        tabtemp[i]=montab[droite];
+        droite=droite+1;
+        i=i+1;
+    }
+    for (i=0; i<=max; i++){
+        montab[i+debut]=tabtemp[i];
+    }
+    free(tabtemp);
 }
