@@ -34,4 +34,5 @@ void echange(int* montab, int i, int j);
 
 int partitionner(int* montab, int debut, int fin);
 
+void fusionner(int* montab, int debut, int milieu, int fin);
 #endif
